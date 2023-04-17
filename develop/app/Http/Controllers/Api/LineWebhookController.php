@@ -16,8 +16,8 @@ class LineWebhookController extends Controller
 
     public function webhook (Request $request)
     {
-        $lineAccessToken = config('app.LINE_CHANNEL_ACCESS_TOKEN');
-        $lineChannelSecret = config('app.LINE_CHANNEL_SECRET');
+        $lineAccessToken = '06781fc855c82ce0cb9c8552e09a742c';
+        $lineChannelSecret = 'QhIrTjbp4Y2TxAWVLYNZmFETOPC/R6r7utvGKBcMqWCZZok+sB/E/plPr/nobz6ww2AsRYrXGc3NRGeSO3sqEeYh45HCXUW7OzD8IRkgMXywUQZWJJE4qtz1UJSqxJpJFfNkZhA0qYQbrVXTq3NrugdB04t89/1O/w1cDnyilFU=';
 
        
         $signature = $request->headers->get(HTTPHeader::LINE_SIGNATURE);
@@ -36,8 +36,8 @@ class LineWebhookController extends Controller
             foreach ($events as $event) {
                 
                 $replyToken = $event->getReplyToken();
-                  $text = $event->getText();// 得到使用者輸入
-           $lineBot->replyText($replyToken, $text);// 回復使用者輸入
+                $text = $event->getText();// 得到使用者輸入
+                $lineBot->replyText($replyToken, $text);// 回復使用者輸入
                 //$textMessage = new TextMessageBuilder("你好");
               //  $lineBot->replyMessage($replyToken, $textMessage);
             }
