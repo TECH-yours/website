@@ -53,7 +53,7 @@ Route::any('/callback', function(Request $request){
             $response_json = json_decode($response, true);
             $chatgpt = $response_json['choices'][0]['text'];
 
-            $bot->replyText($reply_token, $name);
+            $bot->replyText($reply_token, $chatgpt);
         }
     }
 });
