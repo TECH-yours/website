@@ -43,21 +43,22 @@ Route::any('/callback', function(Request $request){
             $client = \Illuminate\Support\Facades\Http::withHeaders([
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer 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'
+                'Authorization' => 'Bearer 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'
             ]);
-            $response = $client->post('https://api.openai.com/v1/completions', [
+        
+            $response = $client->post('https://api.openai.com/v1/chat/completions', [
                 'model' => "gpt-3.5-turbo-0301",
                 "messages" => [
                     [
                         "role" => "user", 
-                        "content" => $text
+                        "content" => "how many water should a person drinks everyday"
                     ]
                 ]
             ]);
             
             $response_json = json_decode($response, true);
-            $chatgpt = $response_json['choices'][0]['text'];
-
+            $chatgpt = $response_json['choices'][0]['message']['content'];
+            
             $bot->replyText($reply_token, $chatgpt);
         }
     }
@@ -67,14 +68,21 @@ Route::get('/test', function(){
     $client = \Illuminate\Support\Facades\Http::withHeaders([
         'Accept' => 'application/json',
         'Content-Type' => 'application/json',
-        'Authorization' => 'Bearer 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'
+        'Authorization' => 'Bearer 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'
     ]);
-    $response = $client->post('https://api.openai.com/v1/completions', [
-        'model' => "text-davinci-003",
-        "prompt" =>  "Say this is a test"
+
+    $response = $client->post('https://api.openai.com/v1/chat/completions', [
+        'model' => "gpt-3.5-turbo-0301",
+        "messages" => [
+            [
+                "role" => "user", 
+                "content" => "how many water should a person drinks everyday"
+            ]
+        ]
     ]);
     
-    $response = json_decode($response, true);
-    $chatgpt = $response['choices'][0]['text'];
+    $response_json = json_decode($response, true);
+    $chatgpt = $response_json['choices'][0]['message']['content'];
+
     return $chatgpt;
 });
