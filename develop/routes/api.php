@@ -25,8 +25,9 @@ use Exception;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 // Route::group(['namespace' => 'Api'], function() {
-    Route::post('/callback', function(){
+    Route::post('/callback', function(Request $request){
         $lineAccessToken = '06781fc855c82ce0cb9c8552e09a742c';
         $lineChannelSecret = 'QhIrTjbp4Y2TxAWVLYNZmFETOPC/R6r7utvGKBcMqWCZZok+sB/E/plPr/nobz6ww2AsRYrXGc3NRGeSO3sqEeYh45HCXUW7OzD8IRkgMXywUQZWJJE4qtz1UJSqxJpJFfNkZhA0qYQbrVXTq3NrugdB04t89/1O/w1cDnyilFU=';
 
