@@ -11,6 +11,8 @@ use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use Exception;
 
+// class LineMessageController extends Controller;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,22 +28,31 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/callback', function(Request $request){
+Route::any('/callback', function(Request $request){
     $lineAccessToken = '06781fc855c82ce0cb9c8552e09a742c';
     $lineChannelSecret = 'QhIrTjbp4Y2TxAWVLYNZmFETOPC/R6r7utvGKBcMqWCZZok+sB/E/plPr/nobz6ww2AsRYrXGc3NRGeSO3sqEeYh45HCXUW7OzD8IRkgMXywUQZWJJE4qtz1UJSqxJpJFfNkZhA0qYQbrVXTq3NrugdB04t89/1O/w1cDnyilFU=';
-
-    $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($lineAccessToken);
-    $bot = new \LINE\LINEBot($httpClient,['channelSecret' => $lineChannelSecret]);
-    $signature = $request->header(HTTPHeader::LINE_SIGNATURE);
-    $body = $request->getContent();
+    define("LINE_MESSAGING_API_CHANNEL_SECRET", $lineChannelSecret);
+    define("LINE_MESSAGING_API_CHANNEL_TOKEN", $lineAccessToken);
+    
+    require __DIR__."/../vendor/autoload.php";
+    
+    $bot = new \LINE\LINEBot(
+        new \LINE\LINEBot\HTTPClient\CurlHTTPClient(LINE_MESSAGING_API_CHANNEL_TOKEN),
+        ['channelSecret' => LINE_MESSAGING_API_CHANNEL_SECRET]
+    );
+    
+    $signature = $_SERVER["HTTP_".\LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
+    $body = file_get_contents("php://input");
+    
     $events = $bot->parseEventRequest($body, $signature);
-    foreach ($events as $event)
-    {
-        if ($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)
-        {
+    
+    foreach ($events as $event) {
+        if ($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage) {
             $reply_token = $event->getReplyToken();
             $text = $event->getText();
             $bot->replyText($reply_token, $text);
         }
     }
+    
+    echo "OK";
 })->name('line.webhook');
