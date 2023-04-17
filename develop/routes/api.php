@@ -33,12 +33,43 @@ Route::any('/callback', function(Request $request){
     $signature = $request->header(HTTPHeader::LINE_SIGNATURE);
     $body = $request->getContent();
     $events = $bot->parseEventRequest($body, $signature);
-    foreach ($events as $event) {
+    foreach ($events as $event)
+    {
         if ($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)
         {
             $reply_token = $event->getReplyToken();
             $text = $event->getText();
-            $bot->replyText($reply_token, $text);
+
+            $client = \Illuminate\Support\Facades\Http::withHeaders([
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer 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'
+            ]);
+            $response = $client->post('https://api.openai.com/v1/completions', [
+                'model' => "text-davinci-003",
+                "prompt" =>  $text
+            ]);
+            
+            $response_json = json_decode($response, true);
+            $chatgpt = $response_json['choices'][0]['text'];
+
+            $bot->replyText($reply_token, $name);
         }
     }
+});
+
+Route::get('/test', function(){
+    $client = \Illuminate\Support\Facades\Http::withHeaders([
+        'Accept' => 'application/json',
+        'Content-Type' => 'application/json',
+        'Authorization' => 'Bearer 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'
+    ]);
+    $response = $client->post('https://api.openai.com/v1/completions', [
+        'model' => "text-davinci-003",
+        "prompt" =>  "Say this is a test"
+    ]);
+    
+    $response = json_decode($response, true);
+    $chatgpt = $response['choices'][0]['text'];
+    return $chatgpt;
 });
