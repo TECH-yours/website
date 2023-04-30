@@ -40,26 +40,31 @@ Route::any('/callback', function(Request $request){
             $reply_token = $event->getReplyToken();
             $text = $event->getText();
 
-            $client = \Illuminate\Support\Facades\Http::withHeaders([
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-                'Authorization' => env('CHATGPT_TOKEN')
-            ]);
-        
-            $response = $client->post('https://api.openai.com/v1/chat/completions', 
-            [
-                'model' => "gpt-3.5-turbo-0301",
-                "messages" => 
+            try {
+                $client = \Illuminate\Support\Facades\Http::withHeaders([
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json',
+                    'Authorization' => env('CHATGPT_TOKEN')
+                ]);
+            
+                $response = $client->post('https://api.openai.com/v1/chat/completions', 
                 [
-                    [ "role" => "user", "content" => $text ]
-                ]
-            ]);
+                    'model' => "gpt-3.5-turbo-0301",
+                    "messages" => 
+                    [
+                        [ "role" => "user", "content" => $text ]
+                    ]
+                ]);
+                
+                $response_json = json_decode($response, true);
+                Log::info($response_json);
+                $chatgpt = $response_json['choices'][0]['message']['content'];
+                
+                $bot->replyText($reply_token, $chatgpt);
+            } catch (\Throwable $th) {
+                Log::error($th);
+            }
             
-            $response_json = json_decode($response, true);
-            Log::info($response_json);
-            $chatgpt = $response_json['choices'][0]['message']['content'];
-            
-            $bot->replyText($reply_token, $chatgpt);
         }
     }
 });
