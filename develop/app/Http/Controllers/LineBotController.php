@@ -60,6 +60,7 @@ function handleTextMessage($bot, $reply_token, $userId, $text)
     $chatgptID = '';
     $messageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('系統處理中，請稍後...');
     $response = $bot->pushMessage($userId, $messageBuilder);
+    $history = [];
     array_push($history, [ 'role' => 'system', 'content' => '你現在是一名營養顧問，請使用繁體中文回答所有問題。' ]);
     $history = ChatLog::getChatLog([ 'History' => [],  'UserId' => $userId ]);
     array_push($history, [ 'role' => 'user', 'content' => $text ]);
