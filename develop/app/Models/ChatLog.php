@@ -33,7 +33,7 @@ class ChatLog extends Model
                 -> select ('userContent', 'gptContent', 'created_at')
                 -> orderBy('created_at', 'asc')
                 -> latest()
-                -> take(10)
+                -> take(5)
                 -> get();
         
         foreach ($db as $key => $value) {
