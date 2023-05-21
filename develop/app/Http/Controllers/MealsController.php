@@ -26,8 +26,8 @@ class MealsController extends Controller
                     -> select('ref_allergic.id', 'ref_allergic.name')
                     -> get();
         }
-
-        return $meals;
+        $returnMeals = $meals->shuffle();
+        return $returnMeals;
     }
 }
 

@@ -17,10 +17,12 @@ return new class extends Migration
             $table  -> string('name', 50);
             $table  -> decimal('lat', 10, 8); // precision of 10, with 8 decimal places
             $table  -> decimal('lng', 11, 8); // precision of 11, with 8 decimal places
-            $table  -> string('area', 10)   -> nullable();
-            $table  -> string('address', 30) -> nullable();
-            $table  -> string('note', 255)  -> nullable();
-            $table  -> timestamps()          ;
+            $table  -> string('area', 10)               -> nullable();
+            $table  -> string('address', 30)            -> nullable();
+            $table  -> string('google_map_url', 255)    -> nullable();
+            $table  -> string('thumbnailImageUrl', 255) -> default(env("URL") . "/image/logo.png");
+            $table  -> string('note', 255)              -> nullable();
+            $table  -> timestamps();
         });
     }
 

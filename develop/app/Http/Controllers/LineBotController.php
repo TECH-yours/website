@@ -9,6 +9,8 @@ use App\Models\ChatLog;
 use App\Models\User;
 use App\Models\Restaurant;
 
+use App\Http\Controllers\RestaurantController;
+
 use LINE\LINEBot\Constant\HTTPHeader;
 
 use LINE\LINEBot\MessageBuilder\FlexMessageBuilder;
@@ -54,7 +56,29 @@ class LineBotController extends Controller
     }
 }
 
+function registerUser($bot, $userId)
+{
+    $response = $bot->getProfile($userId);
+    if ($response->isSucceeded())
+        $tmp = User::store($response->getJSONDecodedBody());
+    else
+        Log::error($response->getHTTPStatus() . ' ' . $response->getRawBody());
+}
+
 function handleTextMessage($bot, $reply_token, $userId, $text) 
+{
+    $pattern = '/^(.+)@(.+)$/';
+    
+    if (preg_match($pattern, $text, $matches)) {
+        $restaurantName = $matches[1];
+        $mealName = $matches[2];
+        $bot->replyText($reply_token, "Restaurant: $restaurantName, Meal: $mealName");
+    } else {
+        func_chatgpt($userId, $text, $bot, $reply_token);
+    }
+}
+
+function func_chatgpt($userId, $text, $bot, $reply_token)
 {
     $chatgpt = '';
     $chatgptID = '';
@@ -101,53 +125,54 @@ function handleTextMessage($bot, $reply_token, $userId, $text)
     }
 }
 
-function haversineDistance($origin, $destination)
-{ 
-    $lat1 = deg2rad($origin['lat']);
-    $lon1 = deg2rad($origin['lng']);
-    $lat2 = deg2rad($destination['lat']);
-    $lon2 = deg2rad($destination['lng']);
-    
-    $deltaLat = $lat2 - $lat1;
-    $deltaLon = $lon2 - $lon1;
-    
-    $a = sin($deltaLat / 2) ** 2 + cos($lat1) * cos($lat2) * sin($deltaLon / 2) ** 2;
-    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-    
-    $distance = 6371 * $c; // Earth's radius is approximately 6371 kilometers
-    
-    return $distance;
-}
-
 function handleLocationMessage($bot, $reply_token, $userId, $latitude, $longitude)
 {
-    $coordinates = Restaurant::all();
+    $request = new Request();
+    $request->merge([ 'lat' => $latitude, 'lng' => $longitude]);
+    $RestaurantController = new RestaurantController();
+    $restaurant = $RestaurantController->getRestaurant($request);    
 
-    $origin = ['lat' => $latitude, 'lng' => $longitude];
-
-    $sorted = $coordinates->sort(function ($a, $b) use ($origin) {
-        $distanceA = haversineDistance($origin, $a);
-        $distanceB = haversineDistance($origin, $b);
-        return $distanceA <=> $distanceB; // Use spaceship operator to compare distances
-    });
-
-    $closest = $sorted->take(3); // Take the top 3 closest restaurants
-
-    $message = "The closest restaurants are:\n";
-    foreach ($closest as $restaurant) {
-        $message .= $restaurant['name'] . "\n";
-    }
-
-    // $message = "You are closest to " . $closest['name'] . " ($latitude, $longitude)";
-    $messageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-    $response = $bot->replyMessage($reply_token, $messageBuilder);
-
-    sendCard($userId);
+    $columns = generateCard_resataurant($restaurant);
+    sendCard($userId, $columns);
 }
 
-function sendCard($userId)
+function generateCard_resataurant($restaurant)
 {
-    log::info('sendCard');
+    $columns = [];
+    foreach($restaurant as $r)
+    {
+        $MealsController = new MealsController();
+        $meals = $MealsController->getMealsByRestaurantId($r->id);
+        $actions = [];
+        if (count($meals) == 0) continue;
+        foreach($meals as $m)
+        {
+            array_push($actions, [
+                "type" => "message",
+                "label" => $m->name,
+                "text" => "[" . $r->name . "]@" . $m->name
+            ]);
+            if (count($actions) >= 3) break ;
+        }
+        array_push($columns, [
+            "thumbnailImageUrl" => $r->thumbnailImageUrl,
+            "imageBackgroundColor" => "#FFFFFF",
+            "title" => $r->name,
+            "text" => $r->address,
+            "defaultAction" => [
+                "type" => "uri",
+                "label" => "打開地圖",
+                "uri" => $r->google_map_url
+            ],
+            "actions" => $actions
+        ]);
+        if (count($columns) >= 3) break ;
+    }
+    return $columns;
+}
+
+function sendCard($userId, $columns)
+{
     try {
         $client = \Illuminate\Support\Facades\Http::withHeaders([
             'Accept' => 'application/json',
@@ -155,112 +180,20 @@ function sendCard($userId)
             'Authorization' => 'Bearer ' . env('LINE_CHANNEL_ACCESS_TOKEN')
         ])->timeout(300);
 
-        // $imageCarousel = [
-        //     "type" => "template",
-        //     "altText" => "餐廳推薦",
-        //     "template" => [
-        //         "type" => "image_carousel",
-        //         "columns" => [
-        //             [
-        //                 "imageUrl" => "https://example.com/bot/images/item1.jpg",
-        //                 "action" => [
-        //                     "type" => "postback",
-        //                     "label" => "Buy",
-        //                     "data" => "action=buy&itemid=111"
-        //                 ]
-        //             ],
-        //             [
-        //                 "imageUrl" => "https://example.com/bot/images/item2.jpg",
-        //                 "action" => [
-        //                     "type" => "message",
-        //                     "label" => "Yes",
-        //                     "text" => "yes"
-        //                 ]
-        //             ],
-        //             [
-        //                 "imageUrl" => "https://example.com/bot/images/item3.jpg",
-        //                 "action" => [
-        //                     "type" => "uri",
-        //                     "label" => "View detail",
-        //                     "uri" => "http://example.com/page/222"
-        //                 ]
-        //             ]
-        //         ]
-        //     ]
-        // ];
-        $template = [
-            "type" => "template",
-            "altText" => "餐廳推薦",
-            "template" => [
-                "type" => "carousel",
-                "columns" => [
-                    [
-                        "thumbnailImageUrl" => "https://example.com/bot/images/item1.jpg",
-                        "imageBackgroundColor" => "#FFFFFF",
-                        "title" => "this is menu",
-                        "text" => "description",
-                        "defaultAction" => [
-                            "type" => "uri",
-                            "label" => "View detail",
-                            "uri" => "http://example.com/page/123"
-                        ],
-                        "actions" => [
-                            [
-                                "type" => "postback",
-                                "label" => "Buy",
-                                "data" => "action=buy&itemid=111"
-                            ],
-                            [
-                                "type" => "postback",
-                                "label" => "Add to cart",
-                                "data" => "action=add&itemid=111"
-                            ],
-                            [
-                                "type" => "uri",
-                                "label" => "View detail",
-                                "uri" => "http://example.com/page/111"
-                            ]
-                        ]
-                    ],
-                    [
-                        "thumbnailImageUrl" => "https://example.com/bot/images/item2.jpg",
-                        "imageBackgroundColor" => "#000000",
-                        "title" => "this is menu",
-                        "text" => "description",
-                        "defaultAction" => [
-                            "type" => "uri",
-                            "label" => "View detail",
-                            "uri" => "http://example.com/page/222"
-                        ],
-                        "actions" => [
-                            [
-                                "type" => "postback",
-                                "label" => "Buy",
-                                "data" => "action=buy&itemid=222"
-                            ],
-                            [
-                                "type" => "postback",
-                                "label" => "Add to cart",
-                                "data" => "action=add&itemid=222"
-                            ],
-                            [
-                                "type" => "uri",
-                                "label" => "View detail",
-                                "uri" => "http://example.com/page/222"
-                            ]
-                        ]
-                    ]
-                ],
-                "imageAspectRatio" => "rectangle",
-                "imageSize" => "cover"
-            ]
-        ];
-    
         $response = $client->post('https://api.line.me/v2/bot/message/push', 
         [
             "to" => $userId,
             "messages" => [
-                $template
+                [
+                    "type" => "template",
+                    "altText" => "餐廳推薦",
+                    "template" => [
+                        "type" => "carousel",
+                        "columns" => $columns,
+                        "imageAspectRatio" => "rectangle",
+                        "imageSize" => "cover"
+                    ]
+                ]
             ]
         ]);
         
@@ -277,13 +210,3 @@ function sendCard($userId)
 
 
 }
-
-function registerUser($bot, $userId)
-{
-    $response = $bot->getProfile($userId);
-    if ($response->isSucceeded())
-        $tmp = User::store($response->getJSONDecodedBody());
-    else
-        Log::error($response->getHTTPStatus() . ' ' . $response->getRawBody());
-}
-
