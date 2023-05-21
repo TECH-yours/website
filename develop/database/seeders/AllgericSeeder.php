@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\allgericlist;
+use App\Models\Allgericlist;
 
 
 class AllgericSeeder extends Seeder
@@ -34,6 +34,6 @@ class AllgericSeeder extends Seeder
             ]
         ];        
 
-        allgericlist::insert($data);
+        Allgericlist::insert($data);
     }
 }
