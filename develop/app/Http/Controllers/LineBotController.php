@@ -260,7 +260,7 @@ function sendCard($userId)
         [
             "to" => $userId,
             "messages" => [
-                $imageCarousel
+                $template
             ]
         ]);
         
