@@ -21,7 +21,7 @@ class restaurantSeeder extends Seeder
                 'lng' => '121.55344413809075',
                 'area' => '106',
                 'address' => '台灣台北市大安區延吉街70巷6弄3號',
-                'google_map_url' => 'https://goo.gl/maps/6Y1Z9Z1Z1Z1Z1Z1Z1',
+                'google_map_url' => 'https://goo.gl/maps/V66n9Sns4H1J1my37?coh=178573&entry=tt',
             ],
             [
                 'name' => '純淨時代 Pure Era',
