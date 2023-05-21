@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LineBotController;
+use App\Http\Controllers\MealsController;
 
 // class LineMessageController extends Controller;
 
@@ -25,3 +26,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request)
 });
 
 Route::any('/callback',  [LineBotController::class, 'callback']);
+
+// Route::get('/restaurants', [RestaurantController::class, 'getRestaurants']);
+
+// get meals by restaurant id
+Route::get('/{id}/meals', [MealsController::class, 'getMealsByRestaurantId']);

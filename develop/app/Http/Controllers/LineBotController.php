@@ -102,7 +102,7 @@ function handleTextMessage($bot, $reply_token, $userId, $text)
 }
 
 function haversineDistance($origin, $destination)
-{
+{ 
     $lat1 = deg2rad($origin['lat']);
     $lon1 = deg2rad($origin['lng']);
     $lat2 = deg2rad($destination['lat']);
@@ -131,13 +131,18 @@ function handleLocationMessage($bot, $reply_token, $userId, $latitude, $longitud
         return $distanceA <=> $distanceB; // Use spaceship operator to compare distances
     });
 
-    $closest = $sorted->first();
+    $closest = $sorted->take(3); // Take the top 3 closest restaurants
+
+    $message = "The closest restaurants are:\n";
+    foreach ($closest as $restaurant) {
+        $message .= $restaurant['name'] . "\n";
+    }
 
     $message = "You are closest to " . $closest['name'] . " ($latitude, $longitude)";
     $messageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
     $response = $bot->replyMessage($reply_token, $messageBuilder);
 
-    // sendCard($userId);
+    sendCard($userId);
 }
 
 function sendCard($userId)
@@ -150,40 +155,106 @@ function sendCard($userId)
             'Authorization' => 'Bearer ' . env('LINE_CHANNEL_ACCESS_TOKEN')
         ])->timeout(300);
 
-        $imageCarousel = [
+        // $imageCarousel = [
+        //     "type" => "template",
+        //     "altText" => "餐廳推薦",
+        //     "template" => [
+        //         "type" => "image_carousel",
+        //         "columns" => [
+        //             [
+        //                 "imageUrl" => "https://example.com/bot/images/item1.jpg",
+        //                 "action" => [
+        //                     "type" => "postback",
+        //                     "label" => "Buy",
+        //                     "data" => "action=buy&itemid=111"
+        //                 ]
+        //             ],
+        //             [
+        //                 "imageUrl" => "https://example.com/bot/images/item2.jpg",
+        //                 "action" => [
+        //                     "type" => "message",
+        //                     "label" => "Yes",
+        //                     "text" => "yes"
+        //                 ]
+        //             ],
+        //             [
+        //                 "imageUrl" => "https://example.com/bot/images/item3.jpg",
+        //                 "action" => [
+        //                     "type" => "uri",
+        //                     "label" => "View detail",
+        //                     "uri" => "http://example.com/page/222"
+        //                 ]
+        //             ]
+        //         ]
+        //     ]
+        // ];
+        $template = [
             "type" => "template",
-            "altText" => "this is a image carousel template",
+            "altText" => "餐廳推薦",
             "template" => [
-                "type" => "image_carousel",
+                "type" => "carousel",
                 "columns" => [
                     [
-                        "imageUrl" => "https://example.com/bot/images/item1.jpg",
-                        "action" => [
-                            "type" => "postback",
-                            "label" => "Buy",
-                            "data" => "action=buy&itemid=111"
+                        "thumbnailImageUrl" => "https://example.com/bot/images/item1.jpg",
+                        "imageBackgroundColor" => "#FFFFFF",
+                        "title" => "this is menu",
+                        "text" => "description",
+                        "defaultAction" => [
+                            "type" => "uri",
+                            "label" => "View detail",
+                            "uri" => "http://example.com/page/123"
+                        ],
+                        "actions" => [
+                            [
+                                "type" => "postback",
+                                "label" => "Buy",
+                                "data" => "action=buy&itemid=111"
+                            ],
+                            [
+                                "type" => "postback",
+                                "label" => "Add to cart",
+                                "data" => "action=add&itemid=111"
+                            ],
+                            [
+                                "type" => "uri",
+                                "label" => "View detail",
+                                "uri" => "http://example.com/page/111"
+                            ]
                         ]
                     ],
                     [
-                        "imageUrl" => "https://example.com/bot/images/item2.jpg",
-                        "action" => [
-                            "type" => "message",
-                            "label" => "Yes",
-                            "text" => "yes"
-                        ]
-                    ],
-                    [
-                        "imageUrl" => "https://example.com/bot/images/item3.jpg",
-                        "action" => [
+                        "thumbnailImageUrl" => "https://example.com/bot/images/item2.jpg",
+                        "imageBackgroundColor" => "#000000",
+                        "title" => "this is menu",
+                        "text" => "description",
+                        "defaultAction" => [
                             "type" => "uri",
                             "label" => "View detail",
                             "uri" => "http://example.com/page/222"
+                        ],
+                        "actions" => [
+                            [
+                                "type" => "postback",
+                                "label" => "Buy",
+                                "data" => "action=buy&itemid=222"
+                            ],
+                            [
+                                "type" => "postback",
+                                "label" => "Add to cart",
+                                "data" => "action=add&itemid=222"
+                            ],
+                            [
+                                "type" => "uri",
+                                "label" => "View detail",
+                                "uri" => "http://example.com/page/222"
+                            ]
                         ]
                     ]
-                ]
+                ],
+                "imageAspectRatio" => "rectangle",
+                "imageSize" => "cover"
             ]
         ];
-        
     
         $response = $client->post('https://api.line.me/v2/bot/message/push', 
         [
