@@ -138,7 +138,7 @@ function handleLocationMessage($bot, $reply_token, $userId, $latitude, $longitud
         $message .= $restaurant['name'] . "\n";
     }
 
-    $message = "You are closest to " . $closest['name'] . " ($latitude, $longitude)";
+    // $message = "You are closest to " . $closest['name'] . " ($latitude, $longitude)";
     $messageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
     $response = $bot->replyMessage($reply_token, $messageBuilder);
 
