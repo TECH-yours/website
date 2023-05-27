@@ -18,7 +18,10 @@ class RefCategorySeeder extends Seeder
             [ 'name' => '中式' ],
             [ 'name' => '日式' ]
         ];        
-
+        foreach ($data as $key => $value) {
+            $data[$key]['created_at'] = now();
+            $data[$key]['updated_at'] = now();
+        }
         RefCategory::insert($data);
     }
 }

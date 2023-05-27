@@ -72,7 +72,10 @@ class restaurantSeeder extends Seeder
                 'google_map_url' => 'https://goo.gl/maps/6Y1Z9Z1Z1Z1Z1Z1Z1',
             ],
         ];
-
+        foreach ($data as $key => $value) {
+            $data[$key]['created_at'] = now();
+            $data[$key]['updated_at'] = now();
+        }
         Restaurant::insert($data);
     }
 }

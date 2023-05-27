@@ -16,4 +16,19 @@ class Meals extends Model
         return $this->hasMany('App\Models\Allgericlist', 'mid', 'id');
     }
 
+    // store
+    public static function store($data){
+        $meals = new Meals;
+        $meals->name = $data['name'];
+        $meals->price = $data['price'];
+        $meals->description = $data['description'];
+        $meals->save();
+        return $meals->id;
+    }
+
+    // get all
+    public static function getAll(){
+        return Meals::all();
+    }
+
 }

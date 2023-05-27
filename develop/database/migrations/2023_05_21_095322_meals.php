@@ -19,11 +19,9 @@ return new class extends Migration
             $table  -> smallInteger ('price')                       -> nullable();
             $table  -> smallInteger ('isVeg')        -> default(0);
             $table  -> smallInteger ('category')     -> default(0);
-            $table  -> smallInteger ('allergic')     -> default(0);
             $table  -> integer ('calorie')                          -> nullable();
             $table  -> timestamps()                  ;
         });
-        
     }
 
     /**

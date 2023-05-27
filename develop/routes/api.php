@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LineBotController;
 use App\Http\Controllers\MealsController;
+use App\Http\Controllers\RestaurantController;
 
 // class LineMessageController extends Controller;
 
@@ -31,3 +32,22 @@ Route::any('/callback',  [LineBotController::class, 'callback']);
 
 // get meals by restaurant id
 Route::get('/{id}/meals', [MealsController::class, 'getMealsByRestaurantId']);
+
+// meal group
+Route::prefix('meals')->group(function () {
+    Route::post('/create',                  [MealsController::class, 'create']);
+    Route::get('/list',                     [MealsController::class, 'getAll']);
+});
+
+Route::prefix('restaurant')->group(function () {
+    Route::post('/create',                  [RestaurantController::class, 'create']);
+    Route::get('/list',                     [RestaurantController::class, 'getAll']);
+});
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/list/restaurant',          [RestaurantController::class, 'getAdminList']);
+    Route::get('/list',                     [RestaurantController::class, 'getAll']);
+});
+
+Route::get('/meals', [MealsController::class, 'getMeals']);

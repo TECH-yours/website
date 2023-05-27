@@ -32,7 +32,11 @@ class AllgericSeeder extends Seeder
                 'mid' => 11,
                 'aid' => 2,
             ]
-        ];        
+        ];       
+        foreach ($data as $key => $value) {
+            $data[$key]['created_at'] = now();
+            $data[$key]['updated_at'] = now();
+        } 
 
         Allgericlist::insert($data);
     }

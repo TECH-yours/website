@@ -17,3 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('admin')->group(function () {
+	Route::get('/login',		function () { return view('pages.admin.login'); })->name('login');
+	Route::get('/restaurant',	function () { return view('pages.admin.restaurant'); })->name('restaurant');
+});

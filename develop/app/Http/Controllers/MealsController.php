@@ -29,5 +29,22 @@ class MealsController extends Controller
         $returnMeals = $meals->shuffle();
         return $returnMeals;
     }
+
+    // store
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        $meal = Meals::store($data);
+        return $meal;
+    }
+
+    // get all
+    public function getAll()
+    {
+        $meals = Meals::getAll();
+        return response()->json([
+            'data' => $meals
+        ], 200);
+    }
 }
 
