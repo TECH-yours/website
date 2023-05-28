@@ -10,4 +10,10 @@ class RefAllgeric extends Model
     use HasFactory;
 
     protected $table = 'ref_allergic';
+
+    // get all
+    public static function getAll()
+    {
+        return RefAllgeric::all();
+    }   
 }

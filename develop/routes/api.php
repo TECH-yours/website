@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\LineBotController;
 use App\Http\Controllers\MealsController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\RefCategoryController;
+use App\Http\Controllers\RefAllergicController;
 
 // class LineMessageController extends Controller;
 
@@ -35,13 +37,33 @@ Route::get('/{id}/meals', [MealsController::class, 'getMealsByRestaurantId']);
 
 // meal group
 Route::prefix('meals')->group(function () {
-    Route::post('/create',                  [MealsController::class, 'create']);
+    Route::post('/create',                  [MealsController::class, 'store']);
+    Route::get('/{id}',                     [MealsController::class, 'getMealsById']);
+    Route::put('/{id}',                     [MealsController::class, 'update']);
     Route::get('/list',                     [MealsController::class, 'getAll']);
 });
 
 Route::prefix('restaurant')->group(function () {
-    Route::post('/create',                  [RestaurantController::class, 'create']);
+    Route::post('/create',                  [RestaurantController::class, 'store']);
+    Route::get('/{id}',                     [RestaurantController::class, 'getRestaurantById']);
+    Route::put('/{id}',                     [RestaurantController::class, 'update']);
     Route::get('/list',                     [RestaurantController::class, 'getAll']);
+});
+
+
+Route::prefix('category')->group(function () {
+    // Route::post('/create',                  [RestaurantController::class, 'store']);
+    // Route::get('/{id}',                     [RestaurantController::class, 'getRestaurantById']);
+    // Route::put('/{id}',                     [RestaurantController::class, 'update']);
+    Route::get('/list',                     [RefCategoryController::class, 'getAll']);
+});
+
+
+Route::prefix('allgery')->group(function () {
+    // Route::post('/create',                  [RestaurantController::class, 'store']);
+    // Route::get('/{id}',                     [RestaurantController::class, 'getRestaurantById']);
+    // Route::put('/{id}',                     [RestaurantController::class, 'update']);
+    Route::get('/list',                     [RefAllergicController::class, 'getAll']);
 });
 
 

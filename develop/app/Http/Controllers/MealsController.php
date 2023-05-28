@@ -38,12 +38,39 @@ class MealsController extends Controller
         return $meal;
     }
 
+    // update
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        $meal = Meals::updatebyId($data, $id);
+        return $meal;
+    }
+
     // get all
     public function getAll()
     {
         $meals = Meals::getAll();
         return response()->json([
             'data' => $meals
+        ], 200);
+    }
+
+    // get getMealsById
+    public function getMealsById($id)
+    {
+        $meal = Meals::where('id', $id)->first();
+        if (!$meal) {
+            return response()->json([
+                'message' => 'Meal not found'
+            ], 404);
+        }
+        $meal->allergies = 
+            Allgericlist::where('mid', $meal->id)
+                -> join('ref_allergic', 'allgericlist.aid', '=', 'ref_allergic.id')
+                -> select('ref_allergic.id', 'ref_allergic.name')
+                -> get();
+        return response()->json([
+            'data' => $meal
         ], 200);
     }
 }

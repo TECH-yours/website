@@ -19,9 +19,10 @@ class Meals extends Model
     // store
     public static function store($data){
         $meals = new Meals;
+        $meals->rid = $data['restaurant_id'];
         $meals->name = $data['name'];
         $meals->price = $data['price'];
-        $meals->description = $data['description'];
+        $meals->category = $data['category'];
         $meals->save();
         return $meals->id;
     }
@@ -29,6 +30,17 @@ class Meals extends Model
     // get all
     public static function getAll(){
         return Meals::all();
+    }
+
+    //updatebyId
+    public static function updatebyId($data, $id){
+        $meals = Meals::find($id);
+        $meals->rid = $data['restaurant_id'];
+        $meals->name = $data['name'];
+        $meals->price = $data['price'];
+        $meals->category = $data['category'];
+        $meals->save();
+        return $meals;
     }
 
 }

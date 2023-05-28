@@ -10,4 +10,10 @@ class RefCategory extends Model
     use HasFactory;
 
     protected $table = 'ref_category';
+
+    // get all
+    public static function getAll()
+    {
+        return RefCategory::all();
+    }
 }
