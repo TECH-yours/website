@@ -19,8 +19,8 @@
         <thead>
             <tr>
             <th class="th-sm col-1">#</th>
-            <th class="th-sm col-1">area</th>
-            <th class="th-sm col-3">name</th>
+            <th class="th-sm col-1">郵遞區號</th>
+            <th class="th-sm col-3">餐廳名稱</th>
             <th class="th-sm col-2">餐廳數量</th>
             <th class="th-sm col-1">操作</th>
             </tr>
@@ -59,47 +59,47 @@
                     <div class="tab-pane active" id="info_tab">
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="col-form-label">name:</label>
+                                <label class="col-form-label">餐廳名稱:</label>
                                 <input type="text" class="form-control" id="edit_name">
                             </div>
                         </div>
                         <div class="d-flex flex-wrap">
                             <div class="col-2">
                                 <div class="form-group">
-                                    <label class="col-form-label">area:</label>
+                                    <label class="col-form-label">郵遞區號:</label>
                                     <input type="text" class="form-control" id="edit_area">
                                 </div>
                             </div>
                             <div class="col-10">
                                 <div class="form-group">
-                                    <label class="col-form-label">address:</label>
+                                    <label class="col-form-label">地址:</label>
                                     <input type="text" class="form-control" id="edit_address"  >
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="col-form-label">google_map_url:</label>
+                                <label class="col-form-label">Google 地圖連結:</label>
                                 <input type="text" class="form-control" id="edit_google_map_url">
                             </div>
                         </div>
                         <div class="d-flex flex-wrap">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="col-form-label">lat:</label>
+                                    <label class="col-form-label">經度:</label>
                                     <input type="text" class="form-control" id="edit_lat">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="col-form-label">lng:</label>
+                                    <label class="col-form-label">緯度:</label>
                                     <input type="text" class="form-control" id="edit_lng"  >
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="col-12 d-flex justify-content-end">
-                            <button type="button" class="btn btn-success save-btn" data-action="add" data-loading-text="<span class='spinner-grow spinner-grow-sm'></span>" data-dismiss="modal">save</button>
+                            <button type="button" class="btn btn-success save-btn" data-action="add" data-loading-text="<span class='spinner-grow spinner-grow-sm'></span>" data-dismiss="modal">儲存</button>
                         </div>
                     </div>
                     <div class="tab-pane" id="meals_tab">
@@ -108,7 +108,7 @@
                             <thead class=""><!-- thead-dark -->
                                 <tr>
                                     <th class="col-2">#</th>
-                                    <th class="col-7 text-left">meals</th>
+                                    <th class="col-7 text-left">餐點清單</th>
                                     <th class="col-3"> <button class="btn btn-primary" id="add-meal-btn">&emsp;新增&emsp;</button> </th>
                                 </tr>
                             </thead>
@@ -135,7 +135,7 @@
             <div class="modal-body">
                 <div class="col-12">
                     <div class="form-group">
-                        <label class="col-form-label">Category:</label>
+                        <label class="col-form-label">類別:</label>
                         <select class="selectpicker col-12" data-size="5"  data-live-search="true" id="meal_category"  title="Choose one of the following...">
                             <option data-subtext="School" value="1" selected>Name</option>
                         </select>
@@ -143,14 +143,14 @@
                 </div>
                 <div class="col-12">
                     <div class="form-group">
-                        <label class="col-form-label">name:</label>
+                        <label class="col-form-label">餐點名稱:</label>
                         <input type="text" class="form-control" id="meal_name">
                     </div>
                 </div>
                 <div class="d-flex flex-wrap">
                     <div class="col-6">
                         <div class="form-group">
-                            <label class="col-form-label">price:</label>
+                            <label class="col-form-label">價錢:</label>
                             <input type="number" class="form-control" id="meal_price">
                         </div>
                     </div>
@@ -171,7 +171,7 @@
                 </div> -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success save-meals-btn" data-action="add" data-loading-text="<span class='spinner-grow spinner-grow-sm'></span>" data-dismiss="modal">save</button>
+                <button type="button" class="btn btn-success save-meals-btn" data-action="add" data-loading-text="<span class='spinner-grow spinner-grow-sm'></span>" data-dismiss="modal">儲存</button>
             </div>
         </div>
     </div>
