@@ -40,6 +40,7 @@ class Meals extends Model
         $meals->name = $data['name'];
         $meals->price = $data['price'];
         $meals->category = $data['category'];
+        $meals->calorie = intval($data['calorie']);
         $meals->save();
         return $meals;
     }
