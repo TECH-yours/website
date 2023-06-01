@@ -19,6 +19,8 @@ return new class extends Migration
             $table  -> decimal('lng', 11, 8); // precision of 11, with 8 decimal places
             $table  -> string('area', 10)               -> nullable();
             $table  -> string('address', 30)            -> nullable();
+            $table  -> string('tel', 15)                -> nullable();
+            $table  -> string('email', 50)              -> nullable();
             $table  -> string('google_map_url', 255)    -> nullable();
             $table  -> string('thumbnailImageUrl', 255) -> default(env("URL") . "/images/logo.png");
             $table  -> string('note', 255)              -> nullable();

@@ -16,6 +16,7 @@ return new class extends Migration
             $table  -> integer('id')	    -> autoIncrement();
             $table  -> integer ('rid')               -> default(0);
             $table  -> string ('name')                              -> nullable();
+            $table  -> string ('description')                       -> nullable();
             $table  -> smallInteger ('price')                       -> nullable();
             $table  -> smallInteger ('isVeg')        -> default(0);
             $table  -> smallInteger ('category')     -> default(0);

@@ -32,6 +32,8 @@ class Restaurant extends Model
         $restaurant->name = $data['name'];
         $restaurant->area = $data['area'];
         $restaurant->address = $data['address'];
+        $restaurant->tel = $data['tel'];
+        $restaurant->email = $data['email'];
         $restaurant->lat = $data['lat'];
         $restaurant->lng = $data['lng'];
         $restaurant->google_map_url = $data['google_map_url'];
@@ -53,6 +55,8 @@ class Restaurant extends Model
         $restaurant->lat = $data['lat'];
         $restaurant->lng = $data['lng'];
         $restaurant->google_map_url = $data['google_map_url'];
+        $restaurant->tel = $data['tel'];
+        $restaurant->email = $data['email'];
         // $restaurant->thumbnailImageUrl = $data['thumbnailImageUrl'];
         $restaurant->save();
         return $restaurant->id;

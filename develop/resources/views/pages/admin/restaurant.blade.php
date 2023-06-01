@@ -49,7 +49,7 @@
                 <!-- tab -->
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#info_tab">餐廳資訊</a>
+                        <a id="info-nav" class="nav-link active" data-toggle="tab" href="#info_tab">餐廳資訊</a>
                     </li>
                     <li class="nav-item com-detail">
                         <a id="meals-nav" class="nav-link" data-toggle="tab" href="#meals_tab">餐點資訊</a>
@@ -64,16 +64,30 @@
                             </div>
                         </div>
                         <div class="d-flex flex-wrap">
-                            <div class="col-2">
+                            <div class="col-12 col-lg-2">
                                 <div class="form-group">
                                     <label class="col-form-label">郵遞區號:</label>
                                     <input type="text" class="form-control" id="edit_area">
                                 </div>
                             </div>
-                            <div class="col-10">
+                            <div class="col-12 col-lg-10">
                                 <div class="form-group">
                                     <label class="col-form-label">地址:</label>
                                     <input type="text" class="form-control" id="edit_address"  >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap">
+                            <div class="col-12 col-lg-5">
+                                <div class="form-group">
+                                    <label class="col-form-label">電話號碼:</label>
+                                    <input type="text" class="form-control" id="edit_tel">
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-7">
+                                <div class="form-group">
+                                    <label class="col-form-label">電子郵件:</label>
+                                    <input type="text" class="form-control" id="edit_email"  >
                                 </div>
                             </div>
                         </div>
@@ -159,6 +173,12 @@
                             <label class="col-form-label">熱量:</label>
                             <input type="number" class="form-control" id="meal_calorie" value="0">
                         </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="col-form-label">敘述:</label>
+                        <textarea class="form-control" id="meal_description" rows="3"></textarea>
                     </div>
                 </div>
                 <!-- <div class="col-12">
