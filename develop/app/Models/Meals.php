@@ -47,4 +47,16 @@ class Meals extends Model
         return $meals;
     }
 
+    //deletebyId
+    public static function deletebyId($id){
+        $meals = Meals::find($id)->delete();
+        return $meals;
+    }
+
+    //deleteByRid
+    public static function deleteByRid($rid){
+        $meals = Meals::where('rid', $rid)->delete();
+        return $meals;
+    }
+
 }

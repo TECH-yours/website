@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Meals;
 
 class RestaurantController extends Controller
 {
@@ -49,7 +50,7 @@ class RestaurantController extends Controller
             $restaurant->meals_count = "<input type='number' value='" . $restaurant->meals_count . "' style='width: 80px; text-align: center;' disabled>";
             // $restaurant->meals_count .= " <button class='btn btn-info view-meals' data-id=" . $restaurant->id . "> 查看餐點 </button>";
             $restaurant->operation =  "<button class='btn btn-secondary edit-btn' data-id=" . $restaurant->id . "> <i class='fas fa-cogs'></i> </button>";
-            // $restaurant->operation .= "&ensp;<button class='btn btn-danger delete-btn' data-id=" . $restaurant->id . "> <i class='fas fa-solid fa-trash'></i> </button>";
+            $restaurant->operation .= "&ensp;<button class='btn btn-danger delete-btn' data-id=" . $restaurant->id . "> <i class='fas fa-solid fa-trash'></i> </button>";
         }
         return response()->json([
             'data' => $restaurants
@@ -60,6 +61,18 @@ class RestaurantController extends Controller
     public function getRestaurantById($id)
     {
         $restaurant = Restaurant::getRestaurantById($id);
+        return response()->json([
+            'data' => $restaurant
+        ], 200);
+    }
+
+    // delete
+    public function delete($id)
+    {
+        // delete meals first
+        $meals = Meals::deleteByRid($id);
+        // delete restaurant
+        $restaurant = Restaurant::deleteById($id);
         return response()->json([
             'data' => $restaurant
         ], 200);

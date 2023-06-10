@@ -40,6 +40,7 @@ Route::prefix('meals')->group(function () {
     Route::post('/create',                  [MealsController::class, 'store']);
     Route::get('/{id}',                     [MealsController::class, 'getMealsById']);
     Route::put('/{id}',                     [MealsController::class, 'update']);
+    Route::delete('/{id}',                  [MealsController::class, 'delete']);
     Route::get('/list',                     [MealsController::class, 'getAll']);
 });
 
@@ -47,6 +48,7 @@ Route::prefix('restaurant')->group(function () {
     Route::post('/create',                  [RestaurantController::class, 'store']);
     Route::get('/{id}',                     [RestaurantController::class, 'getRestaurantById']);
     Route::put('/{id}',                     [RestaurantController::class, 'update']);
+    Route::delete('/{id}',                  [RestaurantController::class, 'delete']);
     Route::get('/list',                     [RestaurantController::class, 'getAll']);
 });
 

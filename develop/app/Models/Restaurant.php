@@ -93,4 +93,15 @@ class Restaurant extends Model
         return $restaurant;
     }
 
+    // deleteById
+    public static function deleteById($id)
+    {
+        $restaurant = Restaurant::where('id', $id)->first();
+        if (!$restaurant) {
+            return null;
+        }
+        $restaurant->delete();
+        return $restaurant->id;
+    }
+
 }

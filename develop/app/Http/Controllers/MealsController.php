@@ -73,5 +73,14 @@ class MealsController extends Controller
             'data' => $meal
         ], 200);
     }
+
+    // delete
+    public function delete($id)
+    {
+        $meal = Meals::deletebyId($id);
+        return response()->json([
+            'data' => $meal
+        ], 200);
+    }
 }
 
