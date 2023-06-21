@@ -154,7 +154,7 @@ function generateCard_resataurant($restaurant)
             ]);
             if (count($actions) >= 3) break ;
         }
-        $host = "https://ec2-16-170-110-7.eu-north-1.compute.amazonaws.com/images/restaurant/";
+        $host = "https://ec2-16-170-110-7.eu-north-1.compute.amazonaws.com/images/";
         array_push($columns, [
             "thumbnailImageUrl" => ($host . $r->thumbnailImageUrl),
             "imageBackgroundColor" => "#FFFFFF",

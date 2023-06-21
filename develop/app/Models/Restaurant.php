@@ -115,19 +115,16 @@ class Restaurant extends Model
         if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
             $oldFile = $restaurant->thumbnailImageUrl;
             
-            if ($oldFile) {
-                try {
+            if ($oldFile && $oldFile != 'logo_test.png') {
+                if (file_exists(public_path('images/restaurant/' . $oldFile)))
                     unlink(public_path('images/restaurant/' . $oldFile));
-                } catch (\Throwable $th) {
-                    //throw $th;
-                }
             }
             
             $file = $data['image'];
             $filename = Uuid::uuid4() . '.' . $file->extension();
             $file->move(public_path('images/restaurant'), $filename);
             
-            $restaurant['thumbnailImageUrl'] = $filename;
+            $restaurant['thumbnailImageUrl'] = "restaurant/" . $filename;
         }
         
         $restaurant->save();
