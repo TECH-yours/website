@@ -50,6 +50,7 @@ Route::prefix('restaurant')->group(function () {
     Route::put('/{id}',                     [RestaurantController::class, 'update']);
     Route::delete('/{id}',                  [RestaurantController::class, 'delete']);
     Route::get('/list',                     [RestaurantController::class, 'getAll']);
+    Route::post('/{id}/thumbnail',          [RestaurantController::class, 'thumbnail']);
 });
 
 

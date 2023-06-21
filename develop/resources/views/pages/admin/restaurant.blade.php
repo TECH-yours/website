@@ -57,10 +57,19 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="info_tab">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label class="col-form-label">餐廳名稱:</label>
-                                <input type="text" class="form-control" id="edit_name">
+                        <div class="d-flex flex-wrap">
+                            <div class="col-12 col-lg-8">
+                                <div class="form-group">
+                                    <label class="col-form-label">餐廳名稱:</label>
+                                    <input type="text" class="form-control" id="edit_name">
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">{{trans('dictionary.uploadImage')}}:</label>
+                                    <input type="file" id="file" name='file'>
+                                    <input type="hidden" id="filecount" value='0'>
+                                </div>
                             </div>
                         </div>
                         <div class="d-flex flex-wrap">

@@ -77,4 +77,15 @@ class RestaurantController extends Controller
             'data' => $restaurant
         ], 200);
     }
+
+    // save image
+    public function thumbnail(Request $request, $id)
+    {
+        $data = $request->all();
+        $restaurant = Restaurant::saveThumbnail($id, $data);
+        return response()->json([
+            'data' => $restaurant,
+            'success' => true
+        ], 200);
+    }
 }

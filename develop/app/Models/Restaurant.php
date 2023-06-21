@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\UploadedFile;
+use Ramsey\Uuid\Uuid;
 
 class Restaurant extends Model
 {
@@ -103,5 +105,36 @@ class Restaurant extends Model
         $restaurant->delete();
         return $restaurant->id;
     }
+
+    // saveThumbnail
+    public static function saveThumbnail($id, $data)
+    {
+        $restaurant = Restaurant::where('id', $id)->first();
+        $filename = null;
+        
+        if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
+            $oldFile = $restaurant->thumbnailImageUrl;
+            
+            if ($oldFile) {
+                try {
+                    unlink(public_path('images/restaurant/' . $oldFile));
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
+            }
+            
+            $file = $data['image'];
+            $filename = Uuid::uuid4() . '.' . $file->extension();
+            $file->move(public_path('images/restaurant'), $filename);
+            
+            $restaurant['thumbnailImageUrl'] = $filename;
+        }
+        
+        $restaurant->save();
+        return $filename;
+    }
+
+
+    // unlink($_SERVER['DOCUMENT_ROOT']."/upload/Image/".$row->uuid_name);
 
 }
