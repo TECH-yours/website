@@ -22,8 +22,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light mobile-hidden">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <div class=""><img src="/img/interwellness_eng.png" style="margin-bottom: 5px; height: 30px;"/>
-                    <!-- <b>interWellness</b> -->
+                <div class=""><img src="/" style="margin-bottom: 5px; height: 30px;"/>
+                    <b>YoursHealth | 友益食</b>
                 </div>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
 <!-- {{--                    <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>--}} -->
                     <li class="nav-item" style="margin: 0 1.5em;font-size:0.9em;"><a class="nav-link" href="#about_us">{{trans('dictionary.About_us')}}</a></li>
                     <li class="nav-item" style="margin: 0 1.5em;font-size:0.9em;"><a class="nav-link" href="#service">{{trans('dictionary.Service')}}</a></li>
-                    <li class="nav-item" style="margin: 0 1.5em;font-size:0.9em;"><a class="nav-link" href="#article">{{trans('dictionary.Article')}}</a></li>
+                    <!-- <li class="nav-item" style="margin: 0 1.5em;font-size:0.9em;"><a class="nav-link" href="#article">{{trans('dictionary.Article')}}</a></li> -->
                     <li class="nav-item" style="margin: 0 1.5em;font-size:0.9em;"><a class="nav-link" href="#fnq">{{trans('dictionary.Fnq')}}</a></li>
                 </ul>
             </ul>

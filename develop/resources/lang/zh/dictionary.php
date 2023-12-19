@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'interwellness' => 'interWellness 為你而思',
+    'YoursHealth' => 'YoursHealth | 友益食',
     'solgan1' => '讓吃下的每一口',
     'solgan2' => '都在累積健康的資本',
     

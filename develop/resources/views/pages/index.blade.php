@@ -21,7 +21,7 @@
                         <div class="col-12">
                             <div class="welcome-text text-center">
                                 <img class="pc-hidden" src="img/logo_icon.png" alt="" style="width:28%; margin-bottom: 2em;" />
-                                <h6 class="animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="200ms">{{trans('dictionary.interwellness')}}</h6>
+                                <h6 class="animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="200ms">{{trans('dictionary.YoursHealth')}}</h6>
                                 <h2 class="animate__animated animate__fadeInRight" data-animation="fadeInLeft" data-delay="500ms" style="font-family:微軟正黑體;">{{trans('dictionary.solgan1')}} <br> {{trans('dictionary.solgan2')}}</h2>
                                 <!-- <a href="#index" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="800ms">Discover Now</a> -->
                             </div>
@@ -125,118 +125,6 @@
         </div>
     </section>
 
-    <a id="article" class="target"></a>
-    <section class="section service-section" style="flex-direction: column">
-        <div class="col-12">
-            <div class="section-heading text-center">
-                <h6 class="tag">Article </h6>
-                <h2>{{trans('dictionary.Article')}}</h2>
-            </div>
-        </div>
-        <div class="col-12">
-            <!-- {{--            owl-carousel--}} -->
-            <div class="projects-slides owl-carousel">
-                <!-- Single Project Slide -->
-                <div class="single-project-slide active bg-img" style="background-image: url(img/article/bao2.jpg);" data-addr="https://www.pcalife.com.tw/zh/news/20220426/">
-                    <div class="project-content">
-                        <div class="text">
-                            <h6>2022 Apr.</h6>
-                            <h5>第一屆保誠創新智造所<br>首獎 | 創新未來獎</h5>
-                        </div>
-                    </div>
-                    <div class="hover-effects">
-                        <div class="text">
-                            <h6>道地小吃</h6>
-                            <h5>台中第二市場</h5>
-                            <p>第二市場自創立已有近八十年的歷史，原為日治時期的新富町市場，主要販售精美高價的貨品，又有「日本人的市場」之稱，後經台中市政府全面整修而成現今風貌，內部集結眾多知名的美味小吃...</p>
-                        </div>
-                        <a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-                <!-- Single Project Slide -->
-                <div class="single-project-slide bg-img" style="background-image: url(img/article/podcast.jpg);" data-addr="https://open.firstory.me/story/cl19sfiihn1qd0hawdh0v7gjs">
-                    <!-- Project Text -->
-                    <div class="project-content">
-                        <div class="text">
-                            <h6>2021 Dec.</h6>
-                            <h5>大學生創業家 林芳如 - <br>用美食幫助慢性病患</h5>
-                        </div>
-                    </div>
-                    <!-- Hover Effects -->
-                    <div class="hover-effects">
-                        <div class="text">
-                            <h6>夜景欣賞</h6>
-                            <h5>柳川河岸</h5>
-                            <p>而晚上的柳川充滿浪漫的氛圍，走在璀璨的燈火下，看著閃閃亮光的柳樹和裝置藝術天鵝，不僅是拍夜景的好地方，也適合情侶夜晚來此散步...</p>
-                        </div>
-                        <a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Project Slide -->
-                <div class="single-project-slide bg-img" style="background-image: url(img/article/1a.jpg);" data-addr="https://www.taipeitimes.com/News/taiwan/archives/2021/09/13/2003764294">
-                    <!-- Project Text -->
-                    <div class="project-content">
-                        <div class="text">
-                            <h6>2021 Aug.</h6>
-                            <h5>NTU’s ‘interWellness’competes <br> in Hult Prize Challenge</h5>
-                        </div>
-                    </div>
-                    <!-- Hover Effects -->
-                    <div class="hover-effects">
-                        <div class="text">
-                            <h6>歷史古蹟</h6>
-                            <h5>道禾六藝文化館</h5>
-                            <p>又稱台中刑務所演武場，興建於日治時期昭和12年(西元1937年)，為司獄官、警察日常練武之武道館舍，屬本市僅存之演武場，歷史原貌保存完整， 極具保存、再利用及建築研究價值...</p>
-                        </div>
-                        <a href="./location2.html" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Project Slide -->
-                <div class="single-project-slide bg-img" style="background-image: url(img/article/a3.jpg);" data-addr="https://www.ocac.gov.tw/OCAC/Pages/Detail.aspx?nodeid=3214&pid=28622893">
-                    <!-- Project Text -->
-                    <div class="project-content">
-                        <div class="text">
-                            <h6>2021 Aug.</h6>
-                            <h5>首度在臺辦理學生界諾貝爾獎<br>青年力量讓臺灣發光</h5>
-                        </div>
-                    </div>
-                    <!-- Hover Effects -->
-                    <div class="hover-effects">
-                        <div class="text">
-                            <h6>吃喝玩樂</h6>
-                            <h5>一中商圈</h5>
-                            <p>位於中友百貨附近，與三民商圈連成一氣，小吃攤、飲食店林立，各種新潮流行資訊在這隨處可見、隨手可得。各式新潮前衛的玩意都會在此先出現，若你是流行的追求者，一中夜市絕對不能錯過...</p>
-                        </div>
-                        <a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Project Slide -->
-                <div class="single-project-slide bg-img" style="background-image: url(img/article/a4.jpg);" data-addr="https://dep.mohw.gov.tw/OOIC/cp-1529-60672-119.html">
-                    <!-- Project Text -->
-                    <div class="project-content">
-                        <div class="text">
-                            <h6>2021 May</h6>
-                            <h5>霍特獎臺灣區第一名得獎團隊<br>拜會陳時中部長</h5>
-                        </div>
-                    </div>
-                    <!-- Hover Effects -->
-                    <div class="hover-effects">
-                        <div class="text">
-                            <h6>吃喝玩樂</h6>
-                            <h5>一中商圈</h5>
-                            <p>位於中友百貨附近，與三民商圈連成一氣，小吃攤、飲食店林立，各種新潮流行資訊在這隨處可見、隨手可得。各式新潮前衛的玩意都會在此先出現，若你是流行的追求者，一中夜市絕對不能錯過...</p>
-                        </div>
-                        <a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- {{--            owl-carousel--}} -->
-        </div>
-    </section>
-
     <section id="fnq" class="section" style="margin-bottom  :80px">
         <div class="col-12 col-sm-10 col-lg-8 d-flex flex-column justify-content-center">
             <div class="col-12 d-flex justify-content-center" style="margin-bottom: 20px;">
@@ -249,12 +137,12 @@
                 <div class="fnq-box">
                     <div class="col-12 fnq-q" data-id="1">
                         <div class="col-12 row d-flex flex-wrap jsutify-content-between">
-                            <div class="col-12 col-sm-11 fnq-tag-title">為你而思目前有提供哪些服務呢？我適合什麼方案？</div>
+                            <div class="col-12 col-sm-11 fnq-tag-title">友益食目前有提供哪些服務呢？我適合什麼方案？</div>
                             <div class="col-12 col-sm-1 d-flex align-items-center justify-content-end"><i class="fas fa-solid fa-chevron-down fa-2x"></i></div>
                         </div>
                     </div>
                     <div class="col-12 fnq-ans" data-id="1">
-                        <h6>為你而思目前提供的主要服務是「客製化配餐服務」，提供公司/團體/個人長期訂餐，餐點可根據口味或身體健康需求如減重、健身減脂、低糖調整。我們也正在開發「友善飲食平臺」，預計08月01日正式上線。希望提供正在進行飲食控制的夥伴們「營養標籤搜尋」、「飲食記錄」、「訂餐」與「社群」的平臺，一同落實健康生活。「客製化配餐服務」請至服務項目詳閱。</h6>
+                        <h6>友益食目前提供的主要服務是「客製化配餐服務」，提供公司/團體/個人長期訂餐，餐點可根據口味或身體健康需求如減重、健身減脂、低糖調整。我們也正在開發「友善飲食平臺」，預計08月01日正式上線。希望提供正在進行飲食控制的夥伴們「營養標籤搜尋」、「飲食記錄」、「訂餐」與「社群」的平臺，一同落實健康生活。「客製化配餐服務」請至服務項目詳閱。</h6>
                     </div>
                 </div>
             </div>
@@ -267,7 +155,7 @@
                         </div>
                     </div>
                     <div class="col-12 fnq-ans" data-id="2">
-                        <h6>由公司承辦人員與為你而思聯繫，我們將有專人向公司承辦人員了解需求，並根據需求提供配餐計畫書，雙方確認內容後便可開始配餐。詳情請閱讀服務項目。</h6>
+                        <h6>由公司承辦人員與友益食聯繫，我們將有專人向公司承辦人員了解需求，並根據需求提供配餐計畫書，雙方確認內容後便可開始配餐。詳情請閱讀服務項目。</h6>
                     </div>
                 </div>
             </div>
@@ -288,12 +176,12 @@
                 <div class="fnq-box">
                     <div class="col-12 fnq-q" data-id="4">
                         <div class="col-12 row d-flex flex-wrap">
-                            <div class="col-12 col-sm-11 fnq-tag-title">該如何聯繫為你而思詢問服務、訂餐？</div>
+                            <div class="col-12 col-sm-11 fnq-tag-title">該如何聯繫友益食詢問服務、訂餐？</div>
                             <div class="col-12 col-sm-1 d-flex align-items-center justify-content-center"><i class="fas fa-solid fa-chevron-down fa-2x"></i></div>
                         </div>
                     </div>
                     <div class="col-12 fnq-ans" data-id="4">
-                        <h6>若有任何想詢問的問題，都歡迎用<a href="https://lin.ee/6sCf4OU" target="_blank"><i class="fab fa-brands fa-line"></i>line</a>聯絡我們，或是<a href="mailto:contact@interwellness.life">寄信至contact@interwellness.life</a>。</h6>
+                        <h6>若有任何想詢問的問題，都歡迎<a href="mailto:contact@bossfriends.com.tw">寄信至contact@bossfriends.com.tw</a>。</h6>
                     </div>
                 </div>
             </div>
@@ -323,7 +211,7 @@
                     <div class="d-flex flex-wrap align-items-center col-11" style="background-color: #b2c3c5; padding: 10px; border-radius: 15px; margin: 1.5rem;">
                         <div class="col-12 col-lg-10" style="padding: 1em;">
                             <h6 style="word-wrap:break-word; color:#144142; line-height: 2rem;">
-                                為你而思正在進行企業夥伴健康飲食專案，透過專人與公司承辦人員接洽了解員工飲食需求，為你而思的團隊有營養師能協助篩選、搭配餐點。讓員工可以在配餐當天享用到營養健康的餐點，並能看到餐點營養標示。讓忙碌的你不再費心午餐要吃什麼，還能利用飲食控制體態與健康。
+                                友益食正在進行企業夥伴健康飲食專案，透過專人與公司承辦人員接洽了解員工飲食需求，友益食的團隊有營養師能協助篩選、搭配餐點。讓員工可以在配餐當天享用到營養健康的餐點，並能看到餐點營養標示。讓忙碌的你不再費心午餐要吃什麼，還能利用飲食控制體態與健康。
                             </h6>
                         </div>
                         <div class="col-12 col-lg-2 d-flex justify-content-center align-items-center">
@@ -375,7 +263,7 @@
                         <div class="d-flex flex-wrap col-11" style="margin: 2em 0;">
                             <div class="col-12 col-lg-4">
                                 <div class="ser-title col-12" style="background-color: #f4bc1d;">Step 1 專人了解需求</div>
-                                <div class="ser-content">為你而思將由專人與公司承辦人員了解需求，如員工人數、預算、飲食習慣與需求等。承辦人員也能向公司的人資、CSR部門提案，使餐點安排成為EAP的服務內容。</div>
+                                <div class="ser-content">友益食將由專人與公司承辦人員了解需求，如員工人數、預算、飲食習慣與需求等。承辦人員也能向公司的人資、CSR部門提案，使餐點安排成為EAP的服務內容。</div>
                             </div>
                             <div class="col-12 col-lg-4">
                                 <div class="ser-title col-12" style="background-color: #f4bc1d;">Step 2 專業配餐提案</div>
@@ -451,13 +339,13 @@
                         <div class="ser2-box col-11 d-flex flex-wrap">
                             <div class="ser2-title col-12 col-sm-4 col-lg-2">標籤定義</div>
                             <div class="ser2-content col-12 col-sm-8 col-lg-10">
-                                各個飲食標籤各有「為你而思」定義的標準範圍，故在使用標籤時還是需要根據個人需求，並且注意我們的文字說明。
+                                各個飲食標籤各有「友益食」定義的標準範圍，故在使用標籤時還是需要根據個人需求，並且注意我們的文字說明。
                             </div>
                         </div>
                         <div class="ser2-box col-11 d-flex flex-wrap flex-row-reverse">
                             <div class="ser2-title col-12 col-sm-4 col-lg-2" style="border-radius: 0 20px 20px 0; background-color:#c3633c;">使用方式</div>
                             <div class="ser2-content col-12 col-sm-8 col-lg-10" style="border-radius: 20px 0 0 20px;">
-                                根據自己的身體狀況、目標，或是專業人士建議過飲食後，至為你而思官網選擇符合自己飲食需求的標籤。可以同時選擇多個標籤呦
+                                根據自己的身體狀況、目標，或是專業人士建議過飲食後，至友益食官網選擇符合自己飲食需求的標籤。可以同時選擇多個標籤呦
                             </div>
                         </div>
                         <div class="ser2-box col-11 d-flex flex-wrap">

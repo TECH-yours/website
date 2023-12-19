@@ -3,7 +3,7 @@
 <html>
 <head>
     @include('includes.head')
-    <title>interWellness | 為你而思</title>
+    <title>YoursHealth | 友益食</title>
     <link rel="icon" href="/img/logo_icon.ico">
 </head>
 <body>
