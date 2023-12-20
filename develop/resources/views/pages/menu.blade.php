@@ -15,7 +15,7 @@
                 <!-- <p class="card-text"><a href="{{ $restaurant->google_map_url }}" target="_blank">Google Map</a></p> -->
             </div>
             <div class="col-6 h-100">
-                <img src="/images/restaurant/{{ $restaurant->thumbnailImageUrl }}" style="height: 100%; width: 100%; object-fit: contain;">
+                <img src="/images/{{ $restaurant->thumbnailImageUrl }}" style="height: 100%; width: 100%; object-fit: contain;">
             </div>
         </div>
     </div>
