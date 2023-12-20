@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Restaurant;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.index');
+});
+
+Route::get('/restaurants', function () {
+    $restaurants = Restaurant::getAll();
+    return view('pages.restaurant', ['restaurants' => $restaurants]);
+});
+
+Route::get('/restaurant/{id}/menu', function ($id) {
+    $restaurant = Restaurant::getRestaurantById($id);
+    // $meals = Restaurant::getMealsByI。d($id);
+    return view('pages.menu', ['restaurant' => $restaurant, 'meals' => $restaurant->meals]);
 });
 
 Route::prefix('admin')->group(function () {
