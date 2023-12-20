@@ -26,7 +26,7 @@
     @foreach ($restaurants as $restaurant)
     <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="padding: 1rem;">
         <div class="card">
-            <img class="card-img-top" src="/images/restaurant/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: contain;">
+            <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: contain;">
             <div class="card-body">
                 <h5 class="card-title mt-1">{{ $restaurant->name }}</h5>
                 <p class="card-text">{{ $restaurant->address }}</p>
