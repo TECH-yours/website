@@ -11,7 +11,7 @@
 
 <body @yield('body')>
     @include('includes.navbar')
-    <div class="container" style="padding: 2em 0;">
+    <div class="container" style="margin-top: 50px;">
 
         <ul class="nav nav-tabs">
             <li class="nav-item"><a class="nav-link nav_link" id="nav_dashboard" href="/user">會員中心</a></li>
