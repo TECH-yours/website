@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html>
-<!-- <head>
-    @yield('includes.header_meta')
-    @include('includes.lib_css')
-    @yield('css')
-</head> -->
 
 <head>
     @include('includes.head')
@@ -31,8 +26,6 @@
 
         @yield('content')
     </div>
-    <!-- @include('includes.lib_script') -->
     @yield('end_script')
-    <!-- @include('includes.footer') -->
 </body>
 </html>
