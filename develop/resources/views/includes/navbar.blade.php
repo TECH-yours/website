@@ -34,14 +34,14 @@
                                     <button id="login" class="btn btn-success" style="border-radius: 20px;">Line 登入</button>
                                 </div>
                             </a>
-                            <a class="member" style="display:none;">
-                                <span class="dropdown-item" href="/user">會員專區</span>
+                            <a class="member" style="display:none;" href="/user">
+                                <span class="dropdown-item" >會員專區</span>
                             </a>
                             <!-- <a class="member" style="display:none;"><a class="dropdown-item" href="/user/profile">基本資料</a></a>
                             <a class="member" style="display:none;"><a class="dropdown-item" href="/user/wishlist">一鍵訂購</a></a>
                             <a class="member" style="display:none;"><a class="dropdown-item" href="/user/order">訂單查詢</a></a> -->
-                            <a class="member" style="display:none;">
-                                <span class="dropdown-item" href="#" onClick="javascript:logout(); return false;">登出</span>
+                            <a class="member" style="display:none;" onClick="javascript:logout(); return false;">
+                                <span class="dropdown-item" href="#" >登出</span>
                             </a>
                         </div>
                     </li>
