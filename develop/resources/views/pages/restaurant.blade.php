@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="container">
 
     <!--  Search Form -->
     <form action="./" method="GET">

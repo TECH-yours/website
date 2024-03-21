@@ -29,7 +29,7 @@
             <div class="restaurant-btn-group mb-2">
                 <button class="btn action-btn outline">外送規則</button>
                 <button class="btn action-btn outline">營業資訊</button>
-                <button class="btn action-btn">線上點餐</button>
+                <button class="btn action-btn" onclick="location.href='{{ $restaurant->google_map_url }}';">線上點餐</button>
             </div>
         </div>
     </div>
