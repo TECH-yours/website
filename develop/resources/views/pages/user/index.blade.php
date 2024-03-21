@@ -19,7 +19,7 @@
                 <div class="bg-light d-flex flex-wrap"  style="padding: 1em 0.5em;">
                     <div class="col-12 col-sm-6 col-lg-4">
                         <h5 class="mt-3"><span class="userName">姓名</span></h5>
-                        <img class="userPicture" src="/img/user/_default.jpg" width="150" height="150" alt="User Profile photo" style="border-radius: 80px;">
+                        <img class="userPicture" src="/images/user/_default.jpg" width="150" height="150" alt="User Profile photo" style="border-radius: 80px;">
                     </div>
                     <div class="col-12 col-sm-6 col-lg-8">
                         <div class="d-flex align-items-center">

@@ -14,7 +14,7 @@
     <hr>
     <div class="d-flex flex-wrap justify-content-center">
         <div class="col-12 col-lg-3 d-flex flex-column align-items-center">
-            <img class="userPicture" src="/img/user/_default.jpg" width="200" height="200" alt="User Profile photo" style="border-radius: 80px;">
+            <img class="userPicture" src="/images/user/_default.jpg" width="200" height="200" alt="User Profile photo" style="border-radius: 80px;">
             <hr>
             <p>註冊時間：<span id="user_created_at"></span></p>
         </div>
