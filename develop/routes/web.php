@@ -27,7 +27,8 @@ Route::get('/', function () {
 
 Route::get('/restaurants', function () {
     $restaurants = Restaurant::getAll();
-    return view('pages.restaurant', ['restaurants' => $restaurants]);
+    $categories = ['中式料理', '日式料理', '美式料理', '義式料理', '韓式料理', '泰式料理', '素食料理', '其他'];
+    return view('pages.restaurant', ['restaurants' => $restaurants, 'categories' => $categories]);
 });
 
 Route::get('/restaurant/{id}/menu', function ($id) {

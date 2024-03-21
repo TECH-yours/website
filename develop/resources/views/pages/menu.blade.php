@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
         <h2 class="section-heading">菜單</h2>
         <div class="d-flex flex-wrap">
             @foreach ($meals as $meal)
