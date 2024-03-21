@@ -117,9 +117,9 @@ body{
 }
 
 .card-title {
-    font-size: 18px;
+    font-size: 1em;
     font-weight: 500;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     white-space: nowrap;
 }
 
@@ -183,7 +183,7 @@ body{
 }
 
 .restaruant-box .tag-group{
-    font-size: 0.85em;
+    font-size: 0.65em;
     display: flex;
     justify-content: space-between;
     margin-top: 1em;
