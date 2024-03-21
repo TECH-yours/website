@@ -49,7 +49,7 @@
                             <p class="meal-price">NT$&ensp;{{ $meal->price }}</h5>
                         </div>
                         <div class="meal-img">
-                            <img src="https://picsum.photos/80?random={{ $meal->id }}" alt="Meal image" style="height: 100%; width: 100%; object-fit: cover;">
+                            <img src="https://picsum.photos/120?random={{ $meal->id }}" alt="Meal image" style="height: 100%; width: 100%; object-fit: cover;">
                         </div>
                     </div>
                 </div>
