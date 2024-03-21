@@ -195,6 +195,12 @@ body{
     background-color: #bbbbbb;
 }
 
+.restaurant-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .restaurant-info .like-btn{
     position: absolute;
     top: 20px;

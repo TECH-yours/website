@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="col-form-label">{{trans('dictionary.uploadImage')}}:</label>
+                                    <label class="col-form-label">上傳圖片:</label>
                                     <input type="file" id="file" name='file'>
                                     <input type="hidden" id="filecount" value='0'>
                                 </div>
@@ -102,7 +102,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="col-form-label">Google 地圖連結:</label>
+                                <label class="col-form-label">外部連結:</label>
                                 <input type="text" class="form-control" id="edit_google_map_url">
                             </div>
                         </div>
