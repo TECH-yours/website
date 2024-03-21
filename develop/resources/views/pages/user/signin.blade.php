@@ -6,7 +6,7 @@
 
 @endsection
 
-@extends('layouts.main')
+@extends('layouts.default')
 @section('content')
 
 <button id="login" type="button" class="btn btn-primary">Login with LINE</button>
