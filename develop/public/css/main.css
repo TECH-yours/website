@@ -248,9 +248,14 @@ body{
     align-items: center;
 }
 
+.meals-box .card-body div{
+    height: 90px;
+}
+
 .meals-box .card-body .meal-info{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .meals-box .card-body .meal-info .meal-name{
