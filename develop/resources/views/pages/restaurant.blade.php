@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
 
     <!--  Search Form -->
     <form action="./" method="GET">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 mb-3">
+            <div class="col-12 col-lg-6 mb-3">
                 <div class="input-group">
                     <select class="custom-select" name="category">
                         <option value="">請選擇餐廳類別</option>
@@ -39,7 +39,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-lg-6 mb-3">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="請輸入關鍵字" name="keyword">
                     <div class="input-group-append">
@@ -92,7 +92,7 @@
         @if (rand(0, 1))
             <div class="col-7 col-lg-4" style="padding: 1rem;">
                 <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
-                    <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: contain;">
+                    <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 380px; object-fit: cover;">
                     <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
                         <i class="far fa-heart"></i>
                         <i class="fas fa-heart" style="color: #ff0000;"></i>
@@ -123,7 +123,7 @@
     <h2 class="section-heading">所有餐廳</h2>
     <div class="d-flex flex-wrap">
         @foreach ($restaurants as $restaurant)
-        <div class="col-12 col-md-6" style="padding: 1rem;">
+        <div class="col-12 col-lg-6" style="padding: 1rem;">
             <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
                 <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: contain;">
                 <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
