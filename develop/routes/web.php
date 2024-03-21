@@ -48,3 +48,12 @@ Route::get('/line/signin', function () {
 
 use App\Http\Controllers\UserController;
 Route::get('/signin', [UserController::class, 'signin'])->name('signin');
+
+Route::get('/user', function () {
+    return view('pages.user.index');
+})->name('user');
+
+Route::get('/user/profile', function () {
+    return view('pages.user.profile');
+})->name('profile');
+
