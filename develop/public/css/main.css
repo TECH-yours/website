@@ -254,19 +254,19 @@ body{
 }
 
 .meals-box .card-body .meal-info .meal-name{
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 900;
     margin-bottom: 0.5em;
 }
 
 .meals-box .card-body .meal-info .meal-description{
-    font-size: 0.8em;
+    font-size: 0.7em;
     font-weight: 500;
     color: #716c60;
 }
 
 .meals-box .card-body .meal-info .meal-price{
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 700;
 }
 

@@ -57,7 +57,7 @@
         @if (rand(0, 1))
             <div class="col-7 col-lg-4 restaruant-box" style="padding: 1rem;">
                 <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
-                    <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: cover;">
+                    <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 120px; object-fit: cover;">
                     <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
                         <i class="far fa-heart"></i>
                         <i class="fas fa-heart" style="color: #ff0000;"></i>
@@ -92,7 +92,7 @@
         @if (rand(0, 1))
             <div class="col-7 col-lg-4 restaruant-box" style="padding: 1rem;">
                 <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
-                    <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: cover;">
+                    <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 120px; object-fit: cover;">
                     <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
                         <i class="far fa-heart"></i>
                         <i class="fas fa-heart" style="color: #ff0000;"></i>
@@ -125,7 +125,7 @@
         @foreach ($restaurants as $restaurant)
         <div class="col-12 col-lg-6 col-xl-4 restaruant-box" style="padding: 1rem;">
             <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
-                <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 380px; object-fit: cover;">
+                <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 250px; object-fit: cover;">
                 <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
                     <i class="far fa-heart"></i>
                     <i class="fas fa-heart" style="color: #ff0000;"></i>
