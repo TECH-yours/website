@@ -39,3 +39,4 @@
 <script src="/libs/moment.min.js"></script>
 
 <script src="/js/general.min.js"></script>
+<script src="/js/signin.min.js"></script>

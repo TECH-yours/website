@@ -73,6 +73,7 @@ class Restaurant extends Model
                 ->join('restaurant', 'meals.rid', '=', 'restaurant.id')
                 ->join('ref_category', 'meals.category', '=', 'ref_category.id')
                 ->select('restaurant.name as restaurant_name', 'ref_category.name as category_name', 'meals.id', 'meals.name', 'meals.price')
+                ->orderBy('restaurant.id', 'desc')
                 ->get();
             $restaurant->meals_count = ($restaurant->meals) ? count($restaurant->meals) : 0;
         }
