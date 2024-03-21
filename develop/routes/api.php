@@ -76,3 +76,14 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/meals', [MealsController::class, 'getMeals']);
+
+
+use App\Http\Controllers\UserController;
+Route::middleware('auth:sanctum')->group(function () {
+
+    // use preflix
+    Route::get('/user', [UserController::class, 'show']); // Get user's profile
+    Route::put('/user', [UserController::class, 'update']); // Update user's profile
+
+    Route::get('/points', [UserPointsController::class, 'index']); // Get user's points
+});
