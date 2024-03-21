@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="d-flex flex-wrap">
-        <div class="col-12" style="height: 380px;">
+        <div class="col-12 col-lg-6" style="height: 380px;">
             <img src="/images/{{ $restaurant->thumbnailImageUrl }}" style="height: 100%; width: 100%; object-fit: cover;">
         </div>
-        <div class="col-12 restaurant-info" style="height: 380px;">
+        <div class="col-12 col-lg-6 restaurant-info" style="height: 380px;">
             <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
                 <i class="far fa-heart"></i>
                 <i class="fas fa-heart" style="color: #ff0000;"></i>
@@ -29,7 +29,7 @@
             <div class="restaurant-btn-group mb-2">
                 <button class="btn action-btn outline">外送規則</button>
                 <button class="btn action-btn outline">營業資訊</button>
-                <button class="btn action-btn" onclick="location.href='{{ $restaurant->google_map_url }}';">線上點餐</button>
+                <button class="btn action-btn" onclick="location.href='{{ $restaurant->google_map_url }}';" >線上點餐</button>
             </div>
         </div>
     </div>
