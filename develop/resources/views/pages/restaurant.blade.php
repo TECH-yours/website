@@ -54,32 +54,34 @@
     <h2 class="section-heading">新進品牌</h2>
     <div class="horizontal-scroll-wrapper">
         @foreach ($restaurants as $restaurant)
-        <div class="col-7 col-lg-4" style="padding: 1rem;">
-            <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
-                <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: contain;">
-                <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
-                    <i class="far fa-heart"></i>
-                    <i class="fas fa-heart" style="color: #ff0000;"></i>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title mt-1">{{ $restaurant->name }}</h5>
-                    <div class="tag-group">
-                        <div class="tag">
-                            <div class="tag-icon"><i class="fas fa-utensils"></i></div>
-                            <div class="tag-text">健康餐</div>
-                        </div>
-                        <div class="tag">
-                            <div class="tag-icon"><i class="fas fa-dollar-sign"></i></div>
-                            <div class="tag-text">200-400</div>
-                        </div>
-                        <div class="tag">
-                            <div class="tag-icon"><i class="fas fa-motorcycle"></i></div>
-                            <div class="tag-text">滿 500 免運</div>
+        @if (rand(0, 1))
+            <div class="col-7 col-lg-4" style="padding: 1rem;">
+                <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
+                    <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: contain;">
+                    <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
+                        <i class="far fa-heart"></i>
+                        <i class="fas fa-heart" style="color: #ff0000;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title mt-1">{{ $restaurant->name }}</h5>
+                        <div class="tag-group">
+                            <div class="tag">
+                                <div class="tag-icon"><i class="fas fa-utensils"></i></div>
+                                <div class="tag-text">健康餐</div>
+                            </div>
+                            <div class="tag">
+                                <div class="tag-icon"><i class="fas fa-dollar-sign"></i></div>
+                                <div class="tag-text">200-400</div>
+                            </div>
+                            <div class="tag">
+                                <div class="tag-icon"><i class="fas fa-motorcycle"></i></div>
+                                <div class="tag-text">滿 500 免運</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
         @endforeach
     </div>
 
@@ -87,32 +89,34 @@
     <h2 class="section-heading">猜你喜歡</h2>
     <div class="horizontal-scroll-wrapper">
         @foreach ($restaurants as $restaurant)
-        <div class="col-7 col-lg-4" style="padding: 1rem;">
-            <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
-                <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: contain;">
-                <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
-                    <i class="far fa-heart"></i>
-                    <i class="fas fa-heart" style="color: #ff0000;"></i>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title mt-1">{{ $restaurant->name }}</h5>
-                    <div class="tag-group">
-                        <div class="tag">
-                            <div class="tag-icon"><i class="fas fa-utensils"></i></div>
-                            <div class="tag-text">健康餐</div>
-                        </div>
-                        <div class="tag">
-                            <div class="tag-icon"><i class="fas fa-dollar-sign"></i></div>
-                            <div class="tag-text">200-400</div>
-                        </div>
-                        <div class="tag">
-                            <div class="tag-icon"><i class="fas fa-motorcycle"></i></div>
-                            <div class="tag-text">滿 500 免運</div>
+        @if (rand(0, 1))
+            <div class="col-7 col-lg-4" style="padding: 1rem;">
+                <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
+                    <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: contain;">
+                    <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
+                        <i class="far fa-heart"></i>
+                        <i class="fas fa-heart" style="color: #ff0000;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title mt-1">{{ $restaurant->name }}</h5>
+                        <div class="tag-group">
+                            <div class="tag">
+                                <div class="tag-icon"><i class="fas fa-utensils"></i></div>
+                                <div class="tag-text">健康餐</div>
+                            </div>
+                            <div class="tag">
+                                <div class="tag-icon"><i class="fas fa-dollar-sign"></i></div>
+                                <div class="tag-text">200-400</div>
+                            </div>
+                            <div class="tag">
+                                <div class="tag-icon"><i class="fas fa-motorcycle"></i></div>
+                                <div class="tag-text">滿 500 免運</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
         @endforeach
     </div>
 
