@@ -5,10 +5,10 @@
 <div class="container-fluid">
 
     <div class="d-flex flex-wrap">
-        <div class="col-12 col-lg-6" style="height: 380px;">
+        <div class="col-12" style="height: 380px;">
             <img src="/images/{{ $restaurant->thumbnailImageUrl }}" style="height: 100%; width: 100%; object-fit: cover;">
         </div>
-        <div class="col-12 col-lg-6 restaurant-info" style="height: 380px;">
+        <div class="col-12 restaurant-info" style="height: 380px;">
             <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
                 <i class="far fa-heart"></i>
                 <i class="fas fa-heart" style="color: #ff0000;"></i>
