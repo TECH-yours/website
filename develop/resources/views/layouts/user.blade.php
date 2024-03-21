@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
+<!-- <head>
     @yield('includes.header_meta')
     @include('includes.lib_css')
     @yield('css')
+</head> -->
+
+<head>
+    @include('includes.head')
+    @include('includes.header_meta', ['page_title' => 'YoursHealth | 友益食'])
+    <title>YoursHealth | 友益食</title>
+    <link rel="icon" href="/img/logo_icon.ico">
 </head>
+
+
 <body @yield('body')>
     @include('includes.navbar')
     <div class="container" style="padding: 2em 0;">
@@ -22,8 +31,8 @@
 
         @yield('content')
     </div>
-    @include('includes.lib_script')
+    <!-- @include('includes.lib_script') -->
     @yield('end_script')
-    @include('includes.footer')
+    <!-- @include('includes.footer') -->
 </body>
 </html>
