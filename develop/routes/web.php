@@ -41,3 +41,10 @@ Route::prefix('admin')->group(function () {
 	Route::get('/login',		function () { return view('pages.admin.login'); })->name('login');
 	Route::get('/restaurant',	function () { return view('pages.admin.restaurant'); })->name('restaurant');
 });
+
+Route::get('/line/signin', function () {
+    return redirect('https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=' . env('LINE_CLIENT_ID') . '&redirect_uri='. env('APP_URL') .'/signin&bot_prompt=aggressive&state=' . env('LINE_STATE') . '&scope=profile%20openid%20email');
+});
+
+use App\Http\Controllers\UserController;
+Route::get('/signin', [UserController::class, 'signin'])->name('signin');

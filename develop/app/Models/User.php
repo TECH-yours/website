@@ -2,63 +2,61 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model implements Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory;
 
-    // /**
-    //  * The attributes that are mass assignable.
-    //  *
-    //  * @var array<int, string>
-    //  */
-    // protected $fillable = [
-    //     'name',
-    //     'email',
-    //     'password',
-    // ];
+    protected $table = 'members';
 
-    // /**
-    //  * The attributes that should be hidden for serialization.
-    //  *
-    //  * @var array<int, string>
-    //  */
-    // protected $hidden = [
-    //     'password',
-    //     'remember_token',
-    // ];
+    protected $fillable = ['name', 'picture', 'email', 'role', 'phone', 'birthday', 'vat'];
 
-    // /**
-    //  * The attributes that should be cast.
-    //  *
-    //  * @var array<string, string>
-    //  */
-    // // protected $casts = [
-    // //     'email_verified_at' => 'datetime',
-    // // ];
+    // Implementing methods from Authenticatable interface
 
-    protected $table = 'users';
-
-    public $timestamps = true;
-
-    protected $guarded = [];
-
-    
-    public static function store($request)
+    public function getAuthIdentifierName()
     {
+        return 'id';
+    }
 
-        $user = User::firstOrCreate(
-            ['userId' => $request['userId']], 
-            [
-                'userId' => $request['userId'], 
-                'displayName' => $request['displayName']
-            ]);
-        return ($request['userId']);
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    public function getRememberToken()
+    {
+        return null; // not supported
+    }
+
+    public function setRememberToken($value)
+    {
+        // not supported
+    }
+
+    public function getRememberTokenName()
+    {
+        return null; // not supported
+    }
+
+    // User.php
+
+    public function coupons()
+    {
+        return $this->belongsToMany(Coupon::class)->withPivot('usage_date');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 
 }
