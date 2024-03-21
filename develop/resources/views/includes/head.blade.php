@@ -10,7 +10,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/info.css">
-<link rel="stylesheet" href="/css/info_500.css">
+<!-- <link rel="stylesheet" href="/css/info_500.css"> -->
 
 <link rel="stylesheet" href="/libs/owl-carousel/docs.theme.min.css">
 <link rel="stylesheet" href="/libs/owl-carousel/owl.carousel.min.css">

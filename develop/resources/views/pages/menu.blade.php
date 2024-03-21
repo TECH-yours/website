@@ -2,8 +2,6 @@
 @extends('layouts.default', ['page_header' =>'餐廳菜單','page_parent' =>'Home','page_parent_path' =>'/','page_path' =>'menu'])
 @section('content')
 
-<div class="container-fluid">
-
     <div class="d-flex flex-wrap">
         <div class="col-12" style="height: 380px;">
             <img src="/images/{{ $restaurant->thumbnailImageUrl }}" style="height: 100%; width: 100%; object-fit: cover;">
@@ -57,7 +55,6 @@
             @endforeach
         </div>
     </div>
-</div>
 
 @stop
 @section('end_script')
