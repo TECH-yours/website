@@ -67,7 +67,7 @@ class Restaurant extends Model
     // get all
     public static function getAll()
     {
-        $restaurants = Restaurant::get()->orderBy('restaurant.id', 'desc');
+        $restaurants = Restaurant::orderBy('restaurant.id', 'desc')->get();
         foreach ($restaurants as $restaurant) {
             $restaurant->meals = Meals::where('rid', $restaurant->id)
                 ->join('restaurant', 'meals.rid', '=', 'restaurant.id')
