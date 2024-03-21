@@ -21,7 +21,7 @@
 {{--<p>{{ session() -> all()  }}</p>--}}
 @include('includes.footer')
 <script>
-    new WOW().init();
+    // new WOW().init();
 
     $('.language').on('click', function () {
         var val = $(this).attr('id');

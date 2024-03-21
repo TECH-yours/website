@@ -55,7 +55,7 @@
     <div class="horizontal-scroll-wrapper">
         @foreach ($restaurants as $restaurant)
         @if (rand(0, 1))
-            <div class="col-7 col-lg-4" style="padding: 1rem;">
+            <div class="col-7 col-lg-4 restaruant-box" style="padding: 1rem;">
                 <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
                     <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: cover;">
                     <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
@@ -90,7 +90,7 @@
     <div class="horizontal-scroll-wrapper">
         @foreach ($restaurants as $restaurant)
         @if (rand(0, 1))
-            <div class="col-7 col-lg-4" style="padding: 1rem;">
+            <div class="col-7 col-lg-4 restaruant-box" style="padding: 1rem;">
                 <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
                     <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 180px; object-fit: cover;">
                     <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
@@ -123,7 +123,7 @@
     <h2 class="section-heading">所有餐廳</h2>
     <div class="d-flex flex-wrap">
         @foreach ($restaurants as $restaurant)
-        <div class="col-12 col-lg-6" style="padding: 1rem;">
+        <div class="col-12 col-lg-6 col-xl-4 restaruant-box" style="padding: 1rem;">
             <div class="card" onclick="location.href='/restaurant/{{ $restaurant->id }}/menu';" style="cursor: pointer;">
                 <img class="card-img-top" src="/images/{{ $restaurant->thumbnailImageUrl }}" alt="Restaurants thumbnail" style="height: 380px; object-fit: cover;">
                 <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">

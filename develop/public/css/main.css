@@ -144,36 +144,29 @@ body{
     align-items: center;
 }
 
-.card .like-btn .fas.fa-heart {
+.like-btn .fas.fa-heart {
     display: none;
 }
 
-.card .like-btn.active .far.fa-heart {
+.like-btn.active .far.fa-heart {
     display: none;
 }
 
-.card .like-btn.active .fas.fa-heart {
+.like-btn.active .fas.fa-heart {
     display: block;
     color: red;
 }
 
-
-
-
-.tag-group{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1em;
-    flex-wrap: wrap;
-}
-
 .tag-group .tag{
     color: black;
-    background-color: #bbbbbb;
     font-weight: bold;
     display: flex;
     border-radius: 30px;
-    margin: 0.2em 0 0.2em 0;
+    margin-bottom: 15px;
+}
+
+.restaurant-info .tag-group .tag{
+    margin-bottom: 25px;
 }
 
 .tag-group .tag .tag-icon{
@@ -182,20 +175,101 @@ body{
     font-weight: bold;
     padding: 0 0.5em;
     border-radius: 30px;
-    font-size: 0.85em;
 }
 
 .tag-group .tag .tag-text{
     padding: 0 0.5em;
     font-weight: normal;
+}
+
+.restaruant-box .tag-group{
     font-size: 0.85em;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    flex-wrap: wrap;
 }
 
+.restaruant-box .tag-group .tag{
+    background-color: #bbbbbb;
+}
 
-.tag{
+.restaurant-info .like-btn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    margin: 0.5em;
+    /* border: solid 1px #716c60; */
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    padding: 3px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restaurant-info .restaurant-btn-group{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+.restaurant-info .restaurant-btn-group .action-btn{
+    background-color: #1cc3b2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5em 1.5em;
+    font-size: 1em;
+    font-weight: 500;
+    transition-duration: 500ms;
+}
+
+.restaurant-info .restaurant-btn-group .action-btn.outline
+{
+    background-color: white;
     color: #1cc3b2;
-    font-weight: bold;
+    border: solid 2px #1cc3b2;
+
 }
+
+.meals-box .card
+{
+    box-shadow: none;
+    border-bottom: solid 1px #d9d9d3;
+}
+
+.meals-box .card-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meals-box .card-body .meal-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.meals-box .card-body .meal-info .meal-name{
+    font-size: 1.5em;
+    font-weight: 900;
+    margin-bottom: 0.5em;
+}
+
+.meals-box .card-body .meal-info .meal-description{
+    font-size: 0.8em;
+    font-weight: 500;
+    color: #716c60;
+}
+
+.meals-box .card-body .meal-info .meal-price{
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
 
 .modal-title{
     margin: 0!important;

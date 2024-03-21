@@ -2,41 +2,60 @@
 @extends('layouts.default', ['page_header' =>'餐廳菜單','page_parent' =>'Home','page_parent_path' =>'/','page_path' =>'menu'])
 @section('content')
 
+<div class="container-fluid">
 
-<div id="breadcrumb" class="breadcrumb-area bg-img" style="background-image: url(/img/cover.jpg);">
-    <div class="container h-100">
-        <div class="row h-100 align-items-center" style="background-color: rgba(187, 187, 187, 0.8);">
-            <div class="col-6 h-100">
-                <h2 class=" mt-5">餐廳菜單</h2>
-                <hr>
-                <!-- <h5 class="card-title mt-1">{{ $restaurant->name }}</h5>
-                <p class="card-text">{{ $restaurant->address }}</p>
-                <p class="card-text">{{ $restaurant->tel }}</p> -->
-                <!-- <p class="card-text"><a href="{{ $restaurant->google_map_url }}" target="_blank">Google Map</a></p> -->
-            </div>
-            <div class="col-6 h-100">
-                <img src="/images/{{ $restaurant->thumbnailImageUrl }}" style="height: 100%; width: 100%; object-fit: contain;">
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
     <div class="d-flex flex-wrap">
-    @foreach ($meals as $meal)
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="padding: 1rem;">
-        <div class="card">
-            <div class="card-header">
-                <span class="badge badge-pill badge-primary">{{ $meal->category_name }}</span>
+        <div class="col-12 col-lg-6" style="height: 380px;">
+            <img src="/images/{{ $restaurant->thumbnailImageUrl }}" style="height: 100%; width: 100%; object-fit: cover;">
+        </div>
+        <div class="col-12 col-lg-6 restaurant-info" style="height: 380px;">
+            <div class="like-btn {{ rand(0, 1) ? 'active' : '' }}">
+                <i class="far fa-heart"></i>
+                <i class="fas fa-heart" style="color: #ff0000;"></i>
             </div>
-            <div class="card-body">
-                <h5 class="card-title mt-1">{{ $meal->name }}</h5>
-                <p class="card-text">NT${{ $meal->price }}</p>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            <h2>{{ $restaurant->name }}</h2>
+            <div class="tag-group mb-2">
+                <div class="tag">
+                    <div class="tag-icon"><i class="fas fa-utensils"></i></div>
+                    <div class="tag-text">健康餐</div>
+                </div>
+                <div class="tag">
+                    <div class="tag-icon"><i class="fas fa-map-marker-alt"></i></i></div>
+                    <div class="tag-text">{{ $restaurant->address }}</div>
+                </div>
+                <div class="tag">
+                    <div class="tag-icon"><i class="fas fa-clock"></i></div>
+                    <div class="tag-text">營業時間：{{ $restaurant->open_time }} - {{ $restaurant->close_time }}</div>
+                </div>
+            </div>
+            <div class="restaurant-btn-group mb-2">
+                <button class="btn action-btn outline">外送規則</button>
+                <button class="btn action-btn outline">營業資訊</button>
+                <button class="btn action-btn">線上點餐</button>
             </div>
         </div>
     </div>
-    @endforeach
+
+    <div class="container-fluid">
+        <h2 class="section-heading">菜單</h2>
+        <div class="d-flex flex-wrap">
+            @foreach ($meals as $meal)
+            <div class="col-12 meals-box" style="padding: 1rem;" data-category="{{ $meal->category_name }}">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="meal-info">
+                            <p class="meal-name">{{ $meal->name }}</h5>
+                            <p class="meal-description">{{ $meal->name }}簡介</p>
+                            <p class="meal-price">NT$&ensp;{{ $meal->price }}</h5>
+                        </div>
+                        <div class="meal-img">
+                            <img src="https://picsum.photos/80?random={{ $meal->id }}" alt="Meal image" style="height: 100%; width: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
 </div>
 
